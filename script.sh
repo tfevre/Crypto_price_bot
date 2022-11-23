@@ -14,6 +14,9 @@ ltc_usdt=$(echo $ltc_price*$btc_price | bc)
 message=`date`" LTC current price (USDT) : "$ltc_usdt
 current_hour=$(date +%T | cut -d " " -f5 | cut -d ":" -f1-2)
 
+# Store all data in a file
+echo $message >> infinite_ltc_log
+
 # If it is a new day -> erase all previous data 
 if [ "$current_hour" == "00:00" ]
 then
